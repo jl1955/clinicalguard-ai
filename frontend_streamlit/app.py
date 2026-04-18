@@ -224,9 +224,10 @@ if "_prev_preset" not in st.session_state:
 
 
 # ── API Helpers ────────────────────────────────────────────────────────────────
+@st.cache_data(ttl=10, show_spinner=False)
 def check_health() -> bool:
     try:
-        return requests.get(f"{BASE_URL}/health", timeout=3).status_code == 200
+        return requests.get(f"{BASE_URL}/health", timeout=2).status_code == 200
     except Exception:
         return False
 

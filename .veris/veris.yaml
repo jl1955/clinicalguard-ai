@@ -1,0 +1,42 @@
+version: "1.0"
+
+# ClinicalGuard AI has no external SaaS dependencies to mock.
+# The simulated statistician communicates via HTTP POST
+# to the governance proxy endpoint.
+
+clinicalguard-ai-env:
+  actor:
+    channels:
+      - type: http
+        url: http://localhost:8000/proxy/query
+        method: POST
+        headers:
+          Content-Type: application/json
+        request:
+          # Veris sends the simulated prompt in the "prompt" field
+          message_field: prompt
+          static_fields:
+            user_id: simulated_statistician
+            session_id: veris_sim_session
+            llm_target: chatgpt
+        response:
+          type: json
+          # Veris reads the agent reply from "llm_response"
+          message_field: llm_response
+    config:
+      # Seconds between actor turns
+      RESPONSE_INTERVAL: "2"
+
+  agent:
+    name: clinicalguard-ai
+    code_path: /agent
+    entry_point: uv run uvicorn main:app --host 0.0.0.0 --port 8000
+    port: 8000
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:///./governance.db
+      # Secrets are injected at runtime via: veris env vars set KEY=val --secret
+      # Do NOT hardcode API keys here
+      BASETEN_API_KEY: ${BASETEN_API_KEY}
+      YOU_API_KEY: ${YOU_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}

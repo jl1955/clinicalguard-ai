@@ -1,0 +1,14 @@
+ARG GVISOR_BASE
+FROM ${GVISOR_BASE}
+
+# uv is pre-installed in the Veris base image
+# Install Python dependencies
+COPY backend/pyproject.toml backend/uv.lock /agent/
+WORKDIR /agent
+RUN uv sync --frozen --no-dev
+
+# Copy backend source code
+COPY backend/ /agent/
+
+# REQUIRED — Veris entrypoint lives at /app
+WORKDIR /app

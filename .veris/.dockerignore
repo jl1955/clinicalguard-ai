@@ -1,0 +1,13 @@
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/.pytest_cache
+backend/.venv
+backend/governance.db
+backend/*.db
+.env
+.env.*
+frontend/
+.cursor/
+.git/
+*.md

@@ -1,0 +1,27 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.13.5",
+    "aiosqlite>=0.22.1",
+    "anthropic>=0.96.0",
+    "fastapi>=0.136.0",
+    "httpx>=0.28.1",
+    "openai>=2.32.0",
+    "pandas>=3.0.2",
+    "plotly>=6.7.0",
+    "python-dotenv>=1.2.2",
+    "streamlit>=1.56.0",
+    "streamlit-autorefresh>=1.0.1",
+    "uvicorn>=0.44.0",
+    "youdotcom>=2.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.11",
+]

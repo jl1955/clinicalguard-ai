@@ -1,0 +1,6 @@
+profiles:
+  default:
+    targets:
+      clinicalguard-ai-env:
+        config_synced_at: '2026-04-18T20:22:36.059017Z'
+        environment_id: env_wly9ksmyiu1tpjpcdffqv

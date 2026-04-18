@@ -1,0 +1,25 @@
+# Secrets
+.env
+.env.*
+
+# Python
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+backend/*.db
+*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Editor
+.DS_Store
+.cursor/
+.vscode/
+
+# Misc
+research/

@@ -1,0 +1,9 @@
+aiohttp>=3.13.5
+aiosqlite>=0.22.1
+anthropic>=0.96.0
+fastapi>=0.136.0
+httpx>=0.28.1
+openai>=2.32.0
+python-dotenv>=1.2.2
+uvicorn>=0.44.0
+youdotcom>=2.3.0
